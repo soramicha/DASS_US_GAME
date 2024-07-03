@@ -1,0 +1,49 @@
+/* Center the container on the page */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.create_animal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  background-color: beige;
+  padding: 20px; /* Adjusted for better padding instead of margin */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional for a little styling */
+}
+
+.title {
+  font-size: 50px;
+  text-align: center; /* Center the text */
+  color: black;
+}
+
+.text_input {
+  font-size: 30px;
+  width: 300px;
+  display: block;
+  padding: 5px;
+  margin: 1% auto; /* Center the input */
+}
+
+.submit-button {
+  font-size: 30px;
+  height: 60px;
+  color: white;
+  background-color: purple;
+  padding: 10px;
+  margin: 30px auto 20px auto; /* Center the button with auto margins */
+  display: block; /* Ensure button is block level */
+  text-align: center; /* Center text within the button */
+}
+
+label {
+  font-size: 20px;
+  color: grey;
+}
