@@ -7,3 +7,4 @@ python-dotenv
 Faker
 numpy
 pre-commit
+axios

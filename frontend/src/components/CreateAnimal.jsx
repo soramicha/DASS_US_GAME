@@ -1,25 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios"; // axios for API requests
 import "./CreateAnimal.css";
 
 const CreateAnimal = () => {
-  function handleCreateAnimal() {
+  // store form data in these const
+  const [animalName, setAnimalName] = useState("");
+  const [animalAttack, setAnimalAttack] = useState("");
+  const [animalDefense, setAnimalDefense] = useState("");
+
+  // handle form submit, send POST request to /animal/create
+  const handleCreateAnimal = (e) => {
+    e.preventDefault(); // prevent default page reload
+
     console.log("'Create Animal' button clicked");
-    return 0;
-  }
+
+    // prepare the form data for the POST request
+    const animalData = {
+      animal_name: animalName,
+      attack: animalAttack,
+      defense: animalDefense,
+    };
+
+    // make the POST request
+    axios // TODO: change link from local to deployed
+      .post("http://localhost:8000/animal/create", animalData, {
+        headers: {
+          access_token: "a", // Include your API key here
+        },
+      })
+      .then((response) => {
+        console.log("Animal created successfully:", response.data);
+        alert("Animal created successfully!");
+      })
+      .catch((error) => {
+        console.error("Error creating animal:", error);
+      });
+  };
 
   return (
     <>
       <div className="create_animal">
         <div className="title">Create Animal</div>
-        <form>
-          <label for="animal_name">Animal Name</label>
+        <form onSubmit={handleCreateAnimal}>
+          <label htmlFor="animal_name">Animal Name</label>
           <input
             className="text_input"
             name="animal_name"
             placeholder="ex. Pikachu"
+            value={animalName} // Bind the state value to the input
+            onChange={(e) => setAnimalName(e.target.value)} // Update state on input change
             required
           ></input>
-          <label for="animal_attack">Attack</label>
+          <label htmlFor="animal_attack">Attack</label>
           <input
             className="text_input"
             name="animal_attack"
@@ -27,9 +59,11 @@ const CreateAnimal = () => {
             type="number"
             min="1"
             max="80"
+            value={animalAttack}
+            onChange={(e) => setAnimalAttack(e.target.value)}
             required
           ></input>
-          <label for="animal_defense">Defense</label>
+          <label htmlFor="animal_defense">Defense</label>
           <input
             className="text_input"
             name="animal_defense"
@@ -37,13 +71,11 @@ const CreateAnimal = () => {
             type="number"
             min="1"
             max="80"
+            value={animalDefense}
+            onChange={(e) => setAnimalDefense(e.target.value)}
             required
           ></input>
-          <button
-            className="submit-button"
-            type="submit"
-            onButtonClick={() => handleCreateAnimal()}
-          >
+          <button className="submit-button" type="submit">
             Create Animal
           </button>
         </form>

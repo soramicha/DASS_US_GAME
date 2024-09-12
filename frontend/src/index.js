@@ -11,17 +11,7 @@ import BuyAnimal from "./components/BuyAnimal";
 import GetInventory from "./components/GetInventory";
 
 function App() {
-  return (
-    <ChakraProvider>
-      <Header />
-      <Todos />
-      <CreateUser />
-      <CreateAnimal />
-      <CreateFight />
-      <GetInventory />
-      <BuyAnimal />
-    </ChakraProvider>
-  );
+  return <CreateAnimal />;
 }
 
 const rootElement = document.getElementById("root");

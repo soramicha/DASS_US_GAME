@@ -6,6 +6,12 @@ import sqlalchemy
 from src import database as db
 import time
 
+# use pydantic model for request body (instead of URL params)
+class AnimalData(BaseModel):
+    animal_name: str
+    attack: int
+    defense: int
+
 router = APIRouter(
     prefix="/animal",
     tags=["animal"],
@@ -13,11 +19,17 @@ router = APIRouter(
 )
 
 @router.post("/create")
-def create_animal(animal_name: str, attack: int, defense: int):
+def create_animal(animal: AnimalData):
     '''Create an animal to be listed in the catalog (price = attack + defense).'''
     # create an animal with animal name, attack and defense
     # price is equal to sum of the stats
-    start = time.time()
+    # start = time.time() # don't need to log time 
+
+    # use request body data for variables
+    animal_name = animal.animal_name
+    attack = animal.attack
+    defense = animal.defense
+
     try:
         if int(animal_name):
             return "Please name an animal with the alphabet."
@@ -48,8 +60,8 @@ def create_animal(animal_name: str, attack: int, defense: int):
     except IntegrityError:
         return "create animal: INTEGRITY ERROR!"
     print("create animal")
-    end = time.time()
-    print(str((end - start) * 1000) + " ms")
+    # end = time.time() # don't need to log time
+    # print(str((end - start) * 1000) + " ms")
     return f"created animal id {animal_id}: {animal_name}, {attack}, {defense}" # animal_id
 
 
