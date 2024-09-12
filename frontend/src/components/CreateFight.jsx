@@ -1,16 +1,44 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react"
 
 const CreateFight = () => {
-  function handleCreateFight() {
-    console.log("'Create fight' button clicked");
-    return 0;
+  // create states
+  const [UserId, setUserId] = useState("")
+  const [AnimalId, setAnimalId] = useState("")
+  const [Payment, setPayment] = useState("")
+
+  // create a fight
+  function handleCreateFight(e) {
+    // prevent page from reloading
+    e.preventDefault()
+
+    // format data
+    const data = {
+      user_id: UserId,
+      animal_id: AnimalId,
+      payment: Payment
+    }
+
+    // create POST request to create fight
+    axios // TODO: change link from local to deployed
+      .post("http://localhost:8000/fight", data, {
+        headers: {
+          access_token: "a", // API key -- TODO: change/hide this when deployed
+        },
+      })
+      .then((response) => {
+        console.log("Fight created successfully:", response.data)
+      })
+      .catch((error) => {
+        console.error("Error creating fight:", error)
+      })
   }
 
   return (
     <>
       <div className="create_fight">
         <div className="title">Create Fight</div>
-        <form>
+        <form onSubmit={handleCreateFight}>
           <label for="user_id">User ID</label>
           <input
             className="text_input"
@@ -19,6 +47,8 @@ const CreateFight = () => {
             type="number"
             min="0"
             required
+            value={UserId}
+            onChange={(e) => setUserId(e.target.value)}
           ></input>
           <label for="animal_id">Animal ID</label>
           <input
@@ -28,6 +58,8 @@ const CreateFight = () => {
             type="number"
             min="0"
             required
+            value={AnimalId}
+            onChange={(e) => setAnimalId(e.target.value)}
           ></input>
           <label for="payment">Payment</label>
           <input
@@ -37,12 +69,11 @@ const CreateFight = () => {
             type="number"
             min="0"
             required
+            value={Payment}
+            onChange={(e) => setPayment(e.target.value)}
           ></input>
           <button
-            className="submit-button"
-            type="submit"
-            onButtonClick={() => handleCreateFight()}
-          >
+            className="submit-button" type="submit">
             Create Fight
           </button>
         </form>
@@ -51,4 +82,4 @@ const CreateFight = () => {
   );
 };
 
-export default CreateFight;
+export default CreateFight

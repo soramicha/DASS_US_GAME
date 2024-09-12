@@ -6,17 +6,31 @@ import sqlalchemy
 import time
 from src import database as db
 import random
+
 router = APIRouter(
     prefix="/fight",
     tags=["fight"],
     dependencies=[Depends(auth.get_api_key)],
 )
 
+class FightData(BaseModel):
+    user_id: int
+    animal_id: int
+    payment: int
+
 # can now pick whichever animal to fight
 @router.post("")
-def create_fight(user_id: int, animal_id: int, payment:int):
+def create_fight(data: FightData):
     '''Create a fight. If won, reward of 10 gold plus bonus of specified payment * 10. 
     If fight lost, gold paid is lost as well. Animal can lose health during a fight'''
+    
+    # retreive data
+    user_id = data.user_id
+    animal_id = data.animal_id
+    payment = data.payment
+    
+    print("recieved fight call")
+    
     start = time.time()
     try:
         with db.engine.begin() as connection:
