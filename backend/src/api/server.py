@@ -22,15 +22,16 @@ app = FastAPI(
     },
 )
 
-"""origins = ["https://potion-exchange.vercel.app"]
+"""origins = ["https://potion-exchange.vercel.app"]"""
 
+# CORS setup, allowing requests through react front end 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins="http://localhost:3001", # assuming frontend port 3001
     allow_credentials=True,
     allow_methods=["GET", "OPTIONS"],
     allow_headers=["*"],
-)"""
+)
 
 app.include_router(inventory.router)
 app.include_router(catalog.router)
