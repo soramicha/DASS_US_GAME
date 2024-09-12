@@ -13,4 +13,7 @@ Run frontend:
 1. Navigate to the frontend folder ('cd frontend')
 2. Run 'npm start'
 
+Libraries Used:
+1. Axios
+
 Try inputting information into the fields and check if the information updates.
