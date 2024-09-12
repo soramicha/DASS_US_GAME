@@ -25,7 +25,7 @@ const CreateAnimal = () => {
     axios // TODO: change link from local to deployed
       .post("http://localhost:8000/animal/create", animalData, {
         headers: {
-          access_token: "a", // Include your API key here
+          access_token: "a", // Include your API key here -- TODO: change/hide this when deployed
         },
       })
       .then((response) => {
