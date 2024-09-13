@@ -5,9 +5,11 @@ import { ChakraProvider } from "@chakra-ui/react";
 //import Header from "./components/Header";
 //import Todos from "./components/Todos";
 import CreateAnimal from "./components/CreateAnimal";
-//import CreateUser from "./components/CreateUser";
 import CreateFight from "./components/CreateFight";
 import { createRoot } from 'react-dom/client'
+import CreateUser from "./components/CreateUser";
+import GetCatalog from "./components/GetCatalog";
+import GetLeaderboard from "./components/GetLeaderboard";
 //import BuyAnimal from "./components/BuyAnimal";
 //import GetInventory from "./components/GetInventory";
 
@@ -22,6 +24,9 @@ function App() {
     <>
       <CreateAnimal />
       <CreateFight/>
+      <CreateUser/>
+      <GetCatalog/>
+      <GetLeaderboard/>
     </>
   )
 }

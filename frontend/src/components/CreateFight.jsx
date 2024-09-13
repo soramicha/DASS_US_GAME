@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react"
 
-const CreateFight = () => {
+export const CreateFight = () => {
   // create states
   const [UserId, setUserId] = useState("")
   const [AnimalId, setAnimalId] = useState("")
