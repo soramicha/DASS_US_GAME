@@ -16,4 +16,9 @@ Run frontend:
 Libraries Used:
 1. Axios
 
+Progress:
+
+June 2024: Finished implementing backend
+September 2024: Connected frontend to backend
+
 Try inputting information into the fields and check if the information updates.
