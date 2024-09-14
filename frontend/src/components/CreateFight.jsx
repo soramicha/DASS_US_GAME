@@ -39,7 +39,7 @@ export const CreateFight = () => {
       <div className="create_fight">
         <div className="title">Create Fight</div>
         <form onSubmit={handleCreateFight}>
-          <label for="user_id">User ID</label>
+          <label htmlFor="user_id">User ID</label>
           <input
             className="text_input"
             name="user_id"
@@ -50,7 +50,7 @@ export const CreateFight = () => {
             value={UserId}
             onChange={(e) => setUserId(e.target.value)}
           ></input>
-          <label for="animal_id">Animal ID</label>
+          <label htmlFor="animal_id">Animal ID</label>
           <input
             className="text_input"
             name="animal_id"
@@ -61,7 +61,7 @@ export const CreateFight = () => {
             value={AnimalId}
             onChange={(e) => setAnimalId(e.target.value)}
           ></input>
-          <label for="payment">Payment</label>
+          <label htmlFor="payment">Payment</label>
           <input
             className="text_input"
             name="payment"

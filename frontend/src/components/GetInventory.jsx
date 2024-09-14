@@ -11,7 +11,7 @@ const GetInventory = () => {
       <div className="get_inventory">
         <div className="title">Get Inventory</div>
         <form>
-          <label for="user_id">User ID</label>
+          <label htmlFor="user_id">User ID</label>
           <input
             className="text_input"
             name="user_id"

@@ -11,7 +11,7 @@ const BuyAnimal = () => {
       <div className="buy_animal">
         <div className="title">Buy Animal</div>
         <form>
-          <label for="aniaml_id">Animal ID</label>
+          <label htmlFor="animal_id">Animal ID</label>
           <input
             className="text_input"
             name="animal_id"
@@ -20,7 +20,7 @@ const BuyAnimal = () => {
             min="0"
             required
           ></input>
-          <label for="user_id">User ID</label>
+          <label htmlFor="user_id">User ID</label>
           <input
             className="text_input"
             name="user_id"

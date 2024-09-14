@@ -36,7 +36,7 @@ const CreateUser = () => {
       <div className="create_user">
         <div className="title">Create User</div>
         <form onSubmit={handleCreateUser}>
-          <label for="user_name">Username</label>
+          <label htmlFor="user_name">Username</label>
           <input
             className="text_input"
             name="user_name"

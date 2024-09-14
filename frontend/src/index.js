@@ -1,6 +1,6 @@
 import React from "react";
 //import { render } from "react-dom";
-import { ChakraProvider } from "@chakra-ui/react";
+//import { ChakraProvider } from "@chakra-ui/react";
 
 //import Header from "./components/Header";
 //import Todos from "./components/Todos";
@@ -14,9 +14,7 @@ import GetLeaderboard from "./components/GetLeaderboard";
 //import GetInventory from "./components/GetInventory";
 
 createRoot(document.getElementById('root')).render(
-    <ChakraProvider>
       <App />
-    </ChakraProvider>
 )
 
 function App() {
