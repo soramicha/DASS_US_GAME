@@ -7,10 +7,14 @@ from src import database as db
 import time
 
 # use pydantic model for request body (instead of URL params)
-class AnimalData(BaseModel):
+class CreateAnimalData(BaseModel):
     animal_name: str
     attack: int
     defense: int
+    
+class BuyAnimalData(BaseModel):
+    user_id: int
+    animal_id: int
 
 router = APIRouter(
     prefix="/animal",
@@ -19,7 +23,7 @@ router = APIRouter(
 )
 
 @router.post("/create")
-def create_animal(animal: AnimalData):
+def create_animal(animal: CreateAnimalData):
     '''Create an animal to be listed in the catalog (price = attack + defense).'''
     # create an animal with animal name, attack and defense
     # price is equal to sum of the stats
@@ -67,8 +71,12 @@ def create_animal(animal: AnimalData):
 
 # can buy multiple animals now
 @router.put("/buy")
-def buy_animal(animal_id: int, user_id: int):
+def buy_animal(data: BuyAnimalData):
     '''Buy animal (only if you have enough gold)'''
+    
+    user_id = data.user_id
+    animal_id = data.animal_id
+    
     start = time.time()
     status = False
     try:
